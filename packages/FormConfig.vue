@@ -1,3 +1,4 @@
+<!-- Form 配置面板 -->
 <template>
   <div class="form-config-container">
     <el-form label-position="left"

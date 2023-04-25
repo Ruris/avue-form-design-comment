@@ -1,7 +1,11 @@
+<!-- 容器类型
+  本项目中是 `子表单组件` 以 table 形式布局
+-->
 <template>
   <div>
     <h3 style="margin: 10px"
         v-show="column.label">{{column.label}}</h3>
+    <!-- 拖拽相关 -->
     <draggable class="widget-form-table__content"
                :list="column.children.column"
                :group="{ name: 'form' }"

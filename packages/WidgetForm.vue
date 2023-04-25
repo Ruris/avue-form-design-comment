@@ -1,13 +1,17 @@
+<!-- 表单组件编辑面板区 -->
 <template>
   <div class="widget-form-container">
+    <!-- 外层表单 -->
     <el-form :label-position="data.labelPosition || 'left'"
              :label-width="data.labelWidth ? `${data.labelWidth}px` : '100px' "
              :label-suffix="data.labelSuffix"
              :model="form"
              ref="widgetForm"
              size="small">
+      <!-- 栅格布局 -->
       <el-row :gutter="data.gutter">
-        <draggable class="widget-form-list"
+        <!-- 拖拽组件 -->
+        <draggable class="widget-form-list" 
                    :list="data.column"
                    :group="{ name: 'form' }"
                    ghost-class="ghost"
@@ -51,6 +55,7 @@
                             @click.native="handleSelectWidget(index)">
                 <widget-form-item :item="column"
                                   :params="column.params"></widget-form-item>
+                <!-- 组件操作按钮 -->
                 <el-button title="删除"
                            @click.stop="handleWidgetDelete(index)"
                            class="widget-action-delete"

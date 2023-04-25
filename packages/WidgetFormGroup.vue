@@ -1,9 +1,11 @@
+<!-- 容器类型 -->
 <template>
   <div>
     <h4 class="widget-form-group__head"
         v-show="column.label"><i :class="column.icon"
          v-show="column.icon"
          style="margin-right: 10px;"></i>{{column.label}}</h4>
+    <!-- 拖拽组件  -->
     <draggable class="widget-form-group__body"
                :list="column.children.column"
                :group="{ name: 'form' }"

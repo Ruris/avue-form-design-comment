@@ -1,16 +1,23 @@
+<!-- 表单组件 container
+  包含动态创建组件功能
+-->
 <template>
   <div>
+    <!-- 标题组件 -->
     <div v-if="item.type == 'title'"
          :style="item.styles"
          style="margin-left: 5px;">
       {{item.value}}
     </div>
+    <!-- 其他组件 -->
+    <!-- 动态创建组件 -->
     <component v-else
                :is="getComponent(item.type, item.component)"
                v-bind="vBind"
                :multiple="false"
                :placeholder="item.placeholder || getPlaceholder(item)"
                :value="['time', 'timerange', 'checkbox'].includes(item.type) ? item.dicData: undefined">
+      <!-- 如果内部有 html 渲染 html -->
       <span v-if="params.html"
             v-html="params.html"></span>
     </component>
@@ -57,6 +64,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * 获取组件名字, 提供 component 组件动态创建组件
+     */
     getComponent(type, component) {
       let KEY_COMPONENT_NAME = 'avue-';
       let result = 'input';
@@ -81,6 +91,10 @@ export default {
       else if (type === 'map') result = 'input-map';
       return KEY_COMPONENT_NAME + result;
     },
+    /**
+     * 生成 placeholder
+     * @param {*} item 
+     */
     getPlaceholder(item) {
       const label = item.label;
       if (['select', 'checkbox', 'radio', 'tree', 'color', 'dates', 'date', 'datetime', 'datetimerange', 'daterange', 'week', 'month', 'year', 'map', 'icon'].includes(item.type))

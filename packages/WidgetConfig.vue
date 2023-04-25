@@ -1,3 +1,4 @@
+<!-- 组件配置面板 -->
 <template>
   <div class="widget-config">
     <el-form label-suffix="："
